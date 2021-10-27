@@ -2,12 +2,14 @@ package com.company;
 
 public class Main {
 
+    static MyCloseableResource myCloseableResource2;
+
     public static void main(String[] args) {
-        MyCloseableResource myCloseableResource2;
+
         try (MyCloseableResource myCloseableResource = new MyCloseableResource()) {
             myCloseableResource2 = myCloseableResource;
 
-            //int b = 1/0; // myCloseableResource2 ??????????
+            int b = 1/0; // myCloseableResource2 ??????????
 
             int a = 1;
         }
@@ -21,7 +23,9 @@ public class Main {
 }
 
 
-class MyCloseableResource implements AutoCloseable {
+class MyCloseableResource
+        implements AutoCloseable
+{
     int handler;
 
     public MyCloseableResource() {
